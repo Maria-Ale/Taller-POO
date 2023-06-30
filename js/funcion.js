@@ -183,4 +183,78 @@ class Empleado{
     var prestaciones = (antiguedad * salario) / 12;
     document.getElementById("resultado3").innerHTML ="Las prestaciones a las que tienes derecho son: $" + prestaciones.toFixed(2);
   }
+
+  function datos() {
+    var op = document.getElementById("adicionaal");
+    if (op.style.display === "none") {
+      op.style.display = "block";
+    } else {
+      op.style.display = "none";
+    }
+  }
+
+  function mostrar(){
+    var ver = document.getElementById("informacion");
+    if (ver.style.display === "none") {
+      ver.style.display = "block";
+    } 
+    let nombreE = document.getElementById("nombre").value;
+    let apellidoE = document.getElementById("apellidos").value;
+    let sexemp = document.getElementById("sexo").value
+    let fechaNaci= document.getElementById("fechaNacimiento").value;
+    let fechaIngree = document.getElementById("fechaIngreso").value;
+    let salariom = document.getElementById("salario").innerHTML;
+    let nivelEst = document.getElementById("formacion").value;
+    let institutoEst = document.getElementById("estudios").value;
+    let tituloEst = document.getElementById("universidad").value;
+   
+    if(datos != null){
+        alert("Nombre: "+ nombreE +
+        "\n Apellidos: " + apellidoE +
+        "\n Sexo: " + sexemp +
+        "\n Fecha de Nacimiento: " + fechaNaci +
+        "\n Fecha de Ingreso: " + fechaIngree +
+        "\n Salario: " + salariom +
+        "\nSu formación academica es: " + nivelEst +
+        "\n Su cargo es: " + institutoEst +
+        "\n Dependecia en la que ejerce es: " + tituloEst
+    );
+    }
+  }
+
+  function datosN() {
+    var opc = document.getElementById("extra");
+    if (opc.style.display === "none") {
+      opc.style.display = "block";
+    } else {
+      opc.style.display = "none";
+    }
+  }
+
+  
+  function nuevoE(){
+    var indicar = document.getElementById("contrato");
+    if (indicar.style.display === "none") {
+      indicar.style.display = "block";
+    } 
+    let nombresNue = document.getElementById("nombresN").value;
+    let apellidosNue = document.getElementById("apellidosN").value;
+    let sexoNue = document.getElementById("sexoN").value;
+    let fechaNacNue = document.getElementById("fechaNacimientoN").value;
+    let fechaIngNue = document.getElementById("fechaIngresoN").value;
+    let formacionNue = document.getElementById("formacionN").value;
+    let institutoN = document.getElementById("institucionN").value;
+
+    if(datosN != null){
+        alert(" Nombres: "+ nombresNue +
+        "\n Apellidos: " + apellidosNue +
+        "\n Sexo: " + sexoNue + 
+        "\n Fecha de Nacimiento: " + fechaNacNue +
+        "\n Fecha de Ingreso: " + fechaIngNue +
+        "\n Formación Académica: " + formacionNue +
+        "\n Nombre de la institución: " + institutoN
+    );
+    }
+  }
+ 
   
