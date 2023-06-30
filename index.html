@@ -19,11 +19,12 @@
     />
     <!-- MDB -->
     <link rel="stylesheet" href="css/mdb.min.css" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/funcion.js"></script>
   </head>
   <body>
     <!-- Start your project here-->
     <div class="container">
-
 <!-- Inicio datos personales-->
       <table class="table align-middle mb-0 bg-white" >
         <thead class="bg-light">
@@ -58,21 +59,20 @@
                 <label class="form-label" for="typeText">Sexo: </label>
               </div>
             </td>
-            
           </tr>
           <tr>
             <td colspan="1">
-              <div class="form-outline">
-                <input type="text" id="fec_nac" class="form-control" />
-                <label class="form-label" for="typeText">Fecha de nacimiento: </label>
+              <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento" class="form-control" min="1923-01-01" max="2004-12-31" />
               </div>
             </td>
           </tr>
           <tr>
             <td colspan="1">
-              <div class="form-outline">
-                <input type="text" id="fec-ing" class="form-control" />
-                <label class="form-label" for="typeText">Fecha de ingreso: </label>
+              <div class="form-group">
+                <label for="fechaIngreso">Fecha de Ingreso:</label>
+                <input type="date" id="fechaIngreso" class="form-control" min="1980-01-01" max="2023-05-31"/>
               </div>
             </td>
           </tr>
@@ -88,22 +88,19 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="2">
+            <td colspan="1">
               <div class="form-outline">
                 <input type="text" id="salario" class="form-control" />
-                <label class="form-label" for="typeText">Salario: </label>
+                <label class="form-label" for="typeText" id="salario" name="salario">Salario </label>
               </div>
             </td>
-            <td>
-              <button onclick="modificar" 
-                id="modificar" class="btn btn-info btn-rounded">Modificar</button>
-            </td>
-            
+              <td colspan="1">
+                <button onclick="modificarSalario()" class="btn btn-info btn-rounded">Modificar</button>
+              </td>
           </tr>
         </tbody>
       </table>
 <!-- Fin salario-->
-
 <!-- Inicio calculos-->
       <table class="table align-middle mb-0 bg-white" >
         <thead class="bg-light">
@@ -114,36 +111,33 @@
         <tbody>
           <tr>
             <td colspan="1">
-              <button onclick="cal_edad" 
-                id="cal_edad" class="btn btn-info btn-rounded">Calcular Edad</button>
+              <button onclick="calcularEdad()" class="btn btn-info btn-rounded">Calcular Edad</button>
             </td>
             <td colspan="1">
               <div class="form-outline">
-                <output type="text" id="edad" class="form-control" />
+                <output type="text" id="resultado1" class="form-control">
                 <label class="form-label" for="typeText">Edad</label>
               </div>
             </td>
           </tr>
           <tr>
             <td colspan="1">
-              <button onclick="cal_ant" 
-                id="cal_ant" class="btn btn-info btn-rounded">Calcular Antigüedad</button>
+              <button onclick="calcularAntiguedad()" class="btn btn-info btn-rounded">Calcular Antiguedad</button>
             </td>
             <td colspan="1">
               <div class="form-outline">
-                <output type="text" id="antiguedad" class="form-control" />
+                <output type="text" id="resultado2" class="form-control">
                 <label class="form-label" for="typeText">Antigüedad </label>
               </div>
             </td>
           </tr>
           <tr>
             <td colspan="1">
-              <button onclick="cal_pres" 
-                id="cal_pres" class="btn btn-info btn-rounded">Calcular Prestaciones</button>
+              <button onclick="calcularPrestaciones()" class="btn btn-info btn-rounded">Calcular Prestaciones</button>
             </td>
             <td colspan="1">
               <div class="form-outline">
-                <output type="text" id="prestaciones" class="form-control" />
+                <output type="text" id="resultado3" class="form-control">
                 <label class="form-label" for="typeText">Prestaciones </label>
               </div>
             </td>
@@ -155,27 +149,131 @@
       <table class="table align-middle mb-0 bg-white" >
         <thead class="bg-light">
           <tr>
-            <th>Salario</th>
+            <th>Puntos de Extensión</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td colspan="2">
-              <button onclick="opc_uno" 
-                id="opc_uno" class="btn btn-info btn-rounded">Opción 1</button>
+              <button onclick="datos()" id="opc_uno" class="btn btn-info btn-rounded">Opción 1</button>
+              <div id="adicionaal" style="display: none;">
+                <table class="table align-middle mb-0 bg-white" >
+                  <thead class="bg-light">
+                    <tr>
+                      <th>Nivel Académico</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <div id="informacion" style="display: none;">
+                      <tr>
+                        <td colspan="1">
+                          <div class="form-outline">
+                            <input type="text" id="formacion" class="form-control" />
+                            <label class="form-label" for="typeText">Ingrese su nivel academico: </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="1">
+                          <div class="form-outline">
+                            <input type="text" id="estudios" class="form-control" />
+                            <label class="form-label" for="typeText">Ingrese nombre de la carrera: </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="1">
+                          <div class="form-outline">
+                            <input type="text" id="universidad" class="form-control" />
+                            <label class="form-label" for="typeText">Ingrese el nombre de la institución: </label>
+                          </div>
+                        </td>
+                      </tr>
+                    </div>
+                  </tbody>
+                </table>
+                <button onclick="mostrar()" id="opc_uno" class="btn btn-info btn-rounded">Mostrar información</button>
+              </div>
             </td>
             <td>
-              <button onclick="opc_dos" 
-                id="opc_dos" class="btn btn-info btn-rounded">Opción 2</button>
-            </td>
-            
+              <button onclick="datosN()" id="opc_dos" class="btn btn-info btn-rounded">Opción 2</button>
+              <div id="extra" style="display: none;">
+                <table class="table align-middle mb-0 bg-white" >
+                  <thead class="bg-light">
+                    <tr>
+                      <th>Registro Nuevo Empleado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <div id="contrato" style="display: none;">
+                      <tr>
+                        <td colspan="1">
+                          <div class="form-outline">
+                            <input type="text" id="nombresN" class="form-control" />
+                            <label class="form-label" for="typeText">Nombres: </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="1">
+                          <div class="form-outline">
+                            <input type="text" id="apellidosN" class="form-control" />
+                            <label class="form-label" for="typeText">Apellidos: </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="1">
+                          <div class="form-outline">
+                            <input type="text" id="sexoN" class="form-control" />
+                            <label class="form-label" for="typeText">Sexo: </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="1">
+                          <div class="form-outline">
+                            <label class="form-label" for="typeText">Fecha de Nacimiento: </label>
+                            <input type="date" id="fechaNacimientoN" class="form-control" min="1923-01-01" max="2004-12-31" />
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="1">
+                          <div class="form-outline">
+                            <label class="form-label" for="typeText">Fecha de Ingreso: </label>
+                            <input type="date" id="fechaIngresoN" class="form-control" min="1923-01-01" max="2004-12-31" />
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="1">
+                          <div class="form-outline">
+                            <input type="text" id="formacionN" class="form-control" />
+                            <label class="form-label" for="typeText">Formación Académica: </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="1">
+                          <div class="form-outline">
+                            <input type="text" id="institucionN" class="form-control" />
+                            <label class="form-label" for="typeText">Nombre de la institución: </label>
+                          </div>
+                        </td>
+                      </tr>
+                    </div>
+                  </tbody>
+                </table>
+                <button onclick="nuevoE()" id="opc_uno" class="btn btn-info btn-rounded">Mostrar Información</button>
+              </div>
+            </td>       
           </tr>
         </tbody>
       </table>
   <!-- Fin puntos de extensión-->
     </div>
     <!-- End your project here-->
-
     <!-- MDB -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Custom scripts -->
